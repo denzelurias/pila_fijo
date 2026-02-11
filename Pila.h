@@ -9,6 +9,9 @@
 
 class Pila {
 public:
+    Pila();
+    void agregar(char valor);
+    void eliminar();
     int obtenerTam() const;
     bool estaVacia() const;
     bool estaLlena() const;
