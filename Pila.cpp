@@ -2,6 +2,7 @@
 // Created by Denzel Urias on 10/02/26.
 //
 
+#include <iostream>
 #include "Pila.h"
 
 Pila::Pila() {
@@ -13,7 +14,7 @@ void Pila::agregar(char valor) {
 }
 
 void Pila::eliminar() {
-    if (estaVacia()) throw "Pila vacía";
+    if (estaVacia()) throw PilaVacia();
     --_tope;
 }
 
@@ -28,9 +29,25 @@ bool Pila::estaLlena() const {
     return _tope == TAM_MAX - 1;
 }
 char Pila::obtenerTope() const {
-    if (estaVacia()) throw "Pila vacía";
+    if (estaVacia()) throw PilaVacia();
     return _elemento[_tope];
 }
 void Pila::vaciar() {
     _tope = -1;
+}
+
+void Pila::imprimir() const {
+    std::cout << "Tope -> ";
+    for (int i{_tope}; i >= 0; --i) {
+        std::cout << "[" << _elemento[i] << "] ";
+    }
+    std::cout << "\n";
+}
+
+// Definición de PilaVacia
+
+Pila::PilaVacia::PilaVacia() throw(){}
+
+const char* Pila::PilaVacia::what() const throw() {
+    return "La pila se encuentra vacía";
 }
