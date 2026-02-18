@@ -7,11 +7,12 @@
 
 #include <iostream>
 #include "Pila.h"
+#include "Vector.h"
 
 
 int main() {
     try {
-        Pila p;
+        Pila<char, 10> p;
         p.imprimir();
 
         p.agregar('q');
@@ -37,7 +38,7 @@ int main() {
     catch (const char *error) {
         std::cerr << "Error: " << error << '\n';
     }
-    catch (Pila::PilaVacia &error) {
+    catch (Pila<char, 10>::PilaVacia &error) {
         std::cerr << "Error en la pila: " << error.what();
     }
     catch (std::exception &error) {
@@ -46,4 +47,5 @@ int main() {
     catch (...) {
         std::cerr << "Error: Ha ocurrido un error inesperado.\n";
     }
+
 }

@@ -1,6 +1,6 @@
 /**
-* @file Matriz.h
- * @author Denzel Urias - Angel Ortega
+* @file Pila.h
+ * @author Denzel Urias
  * @date 08/02/26
  * @brief Definición de la clase Pila.
  */
@@ -12,16 +12,19 @@
 
 #define TAM_MAX 10
 
+template <typename T, int tam>
 class Pila {
+    template <typename TT, int ttam>
+    friend std::ostream & operator<<(std::ostream &salida, const Pila<TT, ttam> &p);
 public:
     Pila();
 
-    void agregar(char valor);
+    void agregar(T valor);
     void eliminar();
     int obtenerTam() const;
     bool estaVacia() const;
     bool estaLlena() const;
-    char obtenerTope() const;
+    T obtenerTope() const;
     void vaciar();
 
     void imprimir() const;
@@ -33,8 +36,8 @@ public:
     };
 private:
     int _tope;
-    char _elemento[TAM_MAX];
+    T _elemento[tam];
 };
 
-//#include ""
+#include "Pila.tpp"
 #endif //PILACONARREGLOFIJO_PILA_H
